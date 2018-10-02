@@ -4,12 +4,12 @@
 [Bb]uild/
 [Bb]uilds/
 Assets/AssetStoreTools*
-Assets/Standard Assets/
-Assets/ExampleAssets/
-Assets/TextMesh Pro/
-Assets/TutorialInfo/
-Assets/Settings/
-Assets/Presets/
+Assets/Standard Assets*
+Assets/ExampleAssets*
+Assets/TextMesh Pro*
+Assets/TutorialInfo*
+Assets/Settings*
+Assets/Presets*
 ProjectSettings/
 
 # Visual Studio cache directory
