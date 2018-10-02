@@ -1,0 +1,27 @@
+﻿using UnityEngine;
+
+public class WalkingPlayerStateAnimator1 : IdlePlayerStateAnimator
+{
+    public override void OnStateUpdate(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex)
+    {
+
+        if (doAction && Input.GetKeyDown(CustomInputManager.instance.actionKey))
+        {
+            DoAction();
+        }
+        if (!isPlayerMoving())
+        {
+            SwitchAnime(AnimeParameters.iswalking, false);
+        }
+
+        if (Input.GetKeyDown(CustomInputManager.instance.jumpKey))
+        {
+            SwitchAnime(AnimeParameters.isjumping, true);
+        }
+
+        if (!controller.IsGrounded && controller.Cc.velocity.y <= 0)
+        {
+            SwitchAnime(AnimeParameters.isfalling, true);
+        }
+    }
+}
