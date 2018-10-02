@@ -4,6 +4,13 @@
 [Bb]uild/
 [Bb]uilds/
 Assets/AssetStoreTools*
+Assets/Standard Assets/
+Assets/ExampleAssets/
+Assets/TextMesh Pro/
+Assets/TutorialInfo/
+Assets/Settings/
+Assets/Presets/
+ProjectSettings/
 
 # Visual Studio cache directory
 .vs/
@@ -23,6 +30,7 @@ ExportedObj/
 *.svd
 *.pdb
 *.opendb
+
 
 # Unity3D generated meta files
 *.pidb.meta
