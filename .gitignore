@@ -10,7 +10,10 @@ Assets/TextMesh Pro*
 Assets/TutorialInfo*
 Assets/Settings*
 Assets/Presets*
+Assets/Terrafarming*
+Assets/Readme.asset*
 ProjectSettings/
+Packages/manifest.json
 
 # Visual Studio cache directory
 .vs/
