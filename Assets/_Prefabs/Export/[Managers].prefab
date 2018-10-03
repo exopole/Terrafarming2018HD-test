@@ -2054,10 +2054,10 @@ MonoBehaviour:
   commentForPlayer: {fileID: 0}
   allInputs: 7a000000730000007100000064000000
   allSpritesForInput:
-  - {fileID: 21300000, guid: 311237d45cdd2ee4d82e6ca0889250c6, type: 3}
-  - {fileID: 21300000, guid: 5ec8bf828d1b41945b730d3ba8ee562b, type: 3}
-  - {fileID: 21300000, guid: f80c34e2256300348a21d0d2febbf4ba, type: 3}
-  - {fileID: 21300000, guid: 8d1d6cb5b8808054681c2b44bed15ba8, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   willStartCinematic: 0
 --- !u!114 &114297425536998166
 MonoBehaviour:
