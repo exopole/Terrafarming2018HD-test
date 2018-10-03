@@ -113,7 +113,6 @@ public class FuelTank : MonoBehaviour {
 
     IEnumerator ConsommationCoroutine()
     {
-        Debug.Log("coucou");
         isConsoRunning = true;
         while (isConsoRunning && energy-CurrentConsommation >= 0 && currentConsommation > 0)
         {
