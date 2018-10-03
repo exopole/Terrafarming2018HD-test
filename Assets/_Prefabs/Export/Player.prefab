@@ -1718,10 +1718,10 @@ MonoBehaviour:
   Cc: {fileID: 143840852516503136}
   moveDirection: {x: 0, y: 0, z: 0}
   canMove: 1
-  gravity: 5
-  jumpSpeed: 10
-  speed: 6
-  speedRotate: 10
+  gravity: 4.5
+  jumpSpeed: 8
+  speed: 8
+  speedRotate: 12
   isFlying: 0
   multSpeedFly: 2
   maxHeightReference: 20
