@@ -5,6 +5,9 @@ using UnityEngine.UI;
 public class MainMenuManager : MonoBehaviour
 {
     private bool hasPressedEnter;
+
+    public static MainMenuManager instance;
+
     public GameObject mainMenuPanel;
     public GameObject keyboardChoicePanel;
     public GameObject pressEnterObj;
@@ -17,8 +20,15 @@ public class MainMenuManager : MonoBehaviour
     public AudioClip mouseOverSnd;
     public AudioClip startGameSnd;
 
+    public PlayerMenuController player;
+    public SwitchPositionMenu positionsMenu;
+
     private void Awake()
     {
+
+        if (instance == null)
+            instance = this;
+
         if (!PlayerPrefs.HasKey("Keyboard"))
         {
             keyboardChoicePanel.SetActive(true);
@@ -32,6 +42,7 @@ public class MainMenuManager : MonoBehaviour
         {
             continueButton.interactable = true;
         }
+
     }
 
     public void QuitGame()
@@ -44,7 +55,10 @@ public class MainMenuManager : MonoBehaviour
     public void StartNewGame()
     {
         PlayerPrefs.SetString("Game", "new");
-        audioS.PlayOneShot(startGameSnd);
+        if (audioS)
+            audioS.PlayOneShot(startGameSnd);
+        else
+            Debug.Log("MainMenuManager ===>>>audioS not implement");
         mainMenuPanel.SetActive(false);
         loadingScreenControl.LoadScreen(1);
         //SceneManager.LoadScene(1, LoadSceneMode.Single);
@@ -66,6 +80,7 @@ public class MainMenuManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0))
             {
                 ShowMainMenu();
+                positionsMenu.Switch(0);
             }
         }
     }

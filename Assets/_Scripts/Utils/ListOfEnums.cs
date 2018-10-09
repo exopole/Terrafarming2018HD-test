@@ -56,9 +56,10 @@ public enum DayStates
     Night
 }
 
-public enum TerrainEnum
+[Flags]
+public enum TerrainEnum : int
 {
-    water = 1 << 0,
-    fire = 1 << 1,
-    acid = 1 << 2,
+    water = 1,
+    fire = 2,
+    acid = 4,
 }

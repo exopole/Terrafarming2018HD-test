@@ -8,6 +8,10 @@ public class BehaviourController : MonoBehaviour
     public CharacterController Cc;
     public Vector3 moveDirection = Vector3.zero;
     public bool canMove = true;
+    [SerializeField]
+    private bool usingDirectionel = true;
+    public Transform target;
+    public float distanceStop;
 
     [Header("Deplacement")]
     public float gravity = 20f;
@@ -27,6 +31,7 @@ public class BehaviourController : MonoBehaviour
     private float minHeight = 0;
     public float flotaison = 0;
 
+
     
 
 
@@ -37,10 +42,12 @@ public class BehaviourController : MonoBehaviour
 
     private void Start()
     {
-        if (!CustomInputManager.instance)
+        if (usingDirectionel && !CustomInputManager.instance)
         {
             Debug.Log("You don't have a CustomInputManager");
+            UsingDirectionel = false;
         }
+
         if (Cc == null)
         {
             Debug.Log("Where is your CharactereController?");
@@ -130,6 +137,27 @@ public class BehaviourController : MonoBehaviour
         }
     }
 
+    public bool UsingDirectionel
+    {
+        get
+        {
+            return usingDirectionel;
+        }
+
+        set
+        {
+            if (value && !CustomInputManager.instance)
+            {
+                Debug.Log("You don't have a CustomInputManager");
+                usingDirectionel = false;
+            }
+            else
+            {
+                usingDirectionel = value;
+            }
+        }
+    }
+
     #endregion
 
     /// <summary>
@@ -138,7 +166,18 @@ public class BehaviourController : MonoBehaviour
     /// <returns></returns>
     public Vector3 CalculateMoveDirection()
     {
-        Vector3 vectDirection = CustomInputManager.instance.GetDirection();
+        Vector3 vectDirection = new Vector3();
+        if (UsingDirectionel)
+        {
+            vectDirection = CustomInputManager.instance.GetDirection();
+        }
+        else if(target)
+        {
+            if (Vector3.Distance(target.position, transform.position) > distanceStop)
+                vectDirection = target.position - transform.position;
+            else
+                target = null;
+        }
         return vectDirection.normalized * speed;
     }
 

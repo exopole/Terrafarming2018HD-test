@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Name: JetPackSO None
   m_EditorClassIdentifier: 
   jumpForce: 0
-  terrains: 0
+  terrains: 4
   consoBoost: 0
   consoVol: 0
+  canVol: 0

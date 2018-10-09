@@ -43,6 +43,8 @@ public class JetPackPlayer : MonoBehaviour, IConsommation {
             }
             else
                 jetPack = value;
+
+            Debug.Log(jetPack.Terrain);
         }
     }
 

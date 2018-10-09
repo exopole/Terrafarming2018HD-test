@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DisableUI : MonoBehaviour {
 
@@ -13,4 +14,5 @@ public class DisableUI : MonoBehaviour {
             UIObj.SetActive(!UIObj.activeInHierarchy);
         }
     }
+
 }

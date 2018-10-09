@@ -32,6 +32,7 @@ public class InGameManager : MonoBehaviour
 
     public CameraController cameraControllerPlayer;
 
+
     private void Awake()
     {
         if (instance == null)
@@ -77,7 +78,9 @@ public class InGameManager : MonoBehaviour
                 HideQuitGameMenu();
                 return;
             }
-            if ((!machineCanvas || !machineCanvas.activeSelf) && !miningCanvas.activeSelf && !isPlanting)
+            if ((!machineCanvas || (machineCanvas && !machineCanvas.activeSelf))
+                &&(! miningCanvas || (miningCanvas && !miningCanvas.activeSelf))
+                && !isPlanting)
             {
                 ShowQuitGameMenu();
             }

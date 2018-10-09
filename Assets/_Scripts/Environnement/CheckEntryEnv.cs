@@ -8,6 +8,7 @@ public class CheckEntryEnv : MonoBehaviour {
 
     public Collider barrage;
 
+
     private void OnTriggerEnter(Collider other)
     {
         var jetpack = other.gameObject.GetComponent<JetPackPlayer>();

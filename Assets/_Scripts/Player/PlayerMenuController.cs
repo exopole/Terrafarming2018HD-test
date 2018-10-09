@@ -2,19 +2,16 @@
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(CharacterController))]
-public class PlayerController1 : MonoBehaviour
+public class PlayerMenuController : MonoBehaviour
 {
     #region variables editor
 
     public CharacterController Cc;
-    public bool isGrounded;
     public Animator anim;
 
-    public bool canDoAction = true;
-
+    
     public BehaviourController behaviour;
-   
-
+    
     #endregion variables editor
 
     private void Start()
@@ -22,29 +19,6 @@ public class PlayerController1 : MonoBehaviour
         Cc = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
         SwitchAnime(AnimeParameters.islanding, false);
-    }
-
-    #region getter/setter
-    #endregion
-
-    public bool IsGrounded
-    {
-        get
-        {
-            return isGrounded;
-        }
-
-        set
-        {
-            if (isGrounded != value)
-            {
-                isGrounded = value;
-
-                SwitchAnime(AnimeParameters.islanding, IsGrounded);
-                SwitchAnime(AnimeParameters.isfalling, !IsGrounded);
-
-            }
-        }
     }
 
     
