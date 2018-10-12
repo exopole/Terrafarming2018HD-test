@@ -55,9 +55,7 @@ public class JetPackManager : MonoBehaviour {
     private void SwitchJetPack(int index)
     {
         jetPackPlayer.JetPack = jetPacks[index];
-        jetPackPlayer.JetPack.Terrain = (TerrainEnum)jetPacks[index].TerrainsTest;
         jetpackUI.SwitchJetPack();
-        Debug.Log("terrainstest ===>>>> "  + jetPacks[index].TerrainsTest);
 
     }
 

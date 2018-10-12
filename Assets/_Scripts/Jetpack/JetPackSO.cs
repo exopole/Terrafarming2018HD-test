@@ -7,14 +7,20 @@ using UnityEngine;
 public class JetPackSO : ScriptableObject
 {
     public float jumpForce;
-    [SerializeField, HideInInspector]
-    private TerrainEnum terrains;
     public int consoBoost, consoVol;
     [SerializeField]
-    private int terrainsTest;
+    public int terrainsValue;
     public bool canVol;
 
 
-    public TerrainEnum Terrain { get; set; }
-    public int TerrainsTest { get => terrainsTest; set => terrainsTest = value; }
+    public TerrainEnum Terrain {
+        get
+        {
+            return (TerrainEnum)terrainsValue;
+        }
+        set
+        {
+            terrainsValue = (int)value;
+        }
+    }
 }

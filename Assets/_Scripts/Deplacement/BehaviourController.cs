@@ -6,11 +6,16 @@ public class BehaviourController : MonoBehaviour
 
     [Header("Général")]
     public CharacterController Cc;
+    public Transform target;
+    public Transform targetRotation;
+
+
     public Vector3 moveDirection = Vector3.zero;
+
     public bool canMove = true;
     [SerializeField]
     private bool usingDirectionel = true;
-    public Transform target;
+
     public float distanceStop;
 
     [Header("Deplacement")]
@@ -80,6 +85,9 @@ public class BehaviourController : MonoBehaviour
         {
             rotation(moveDirection);
         }
+        else if (targetRotation)
+            rotationToward(targetRotation);
+
         Cc.Move(moveDirection * Time.deltaTime);
         if(Cc.velocity.y == 0)
         {
@@ -262,6 +270,11 @@ public class BehaviourController : MonoBehaviour
         Vector3 rotation = new Vector3(direction.x, 0, direction.z);
 
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(rotation.normalized), speedRotate * Time.deltaTime);
+    }
+
+    public void rotationToward(Transform target)
+    {
+        rotation(target.position - transform.position);
     }
 
     public void setMaxAltitudeWithRef(float altitude)

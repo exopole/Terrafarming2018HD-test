@@ -16,7 +16,7 @@ public class JetPackPlayerCustomEditor : Editor
     private void OnEnable()
     {
         res = (JetPackSO)target;
-        terrains = (TerrainEnum)res.TerrainsTest;
+        terrains = res.Terrain;
     }
 
     public override void OnInspectorGUI()
@@ -26,7 +26,8 @@ public class JetPackPlayerCustomEditor : Editor
         //terrains = (TerrainEnum)EditorGUILayout.EnumMaskField("Terrains", enumValue: terrains);
         terrains = (TerrainEnum)EditorGUILayout.EnumFlagsField(terrains);
         //res.Terrain = terrains;
-        res.TerrainsTest = (int)terrains;
+        
+        res.terrainsValue = (int)terrains;
         serializedObject.ApplyModifiedProperties();
         DrawDefaultInspector();
     }

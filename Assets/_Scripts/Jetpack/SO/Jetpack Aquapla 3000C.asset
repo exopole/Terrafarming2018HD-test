@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Jetpack Aquapla 3000C
   m_EditorClassIdentifier: 
   jumpForce: 15
-  terrains: 0
   consoBoost: 10
   consoVol: 2
+  terrainsValue: 1
   canVol: 1

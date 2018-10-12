@@ -18,6 +18,13 @@ public class CameraController : MonoBehaviour
     public Text verticalText;
     public Text horizontalText;
 
+    public float radiusDetect;
+    public float heigthDetect;
+    public float minHeight;
+
+    public LayerMask mask;
+
+
     #endregion editor variables
 
     #region other variables
@@ -35,6 +42,9 @@ public class CameraController : MonoBehaviour
     private float h = 45;
 
     private float z;
+
+
+    public bool canMoveBottom = true;
 
 
     #endregion other variables
@@ -58,16 +68,20 @@ public class CameraController : MonoBehaviour
     private void Update()
     {
         
-        moveSmoothlyCam();
+        MoveSmoothlyCam();
         RotateSmoothlyCam();
     }
 
     #endregion unity methods
 
-    public void moveSmoothlyCam()
+    #region move Camera
+    public void MoveSmoothlyCam()
     {
         offset = Quaternion.Euler(V, -H, Z) * new Vector3(0, 0, 1);
-        transform.position = Vector3.Lerp(transform.position, focus.transform.position - offset * Distance, smooth * Time.deltaTime);
+        Vector3 newPosition = focus.transform.position - offset * Distance;
+        newPosition = DetectEnvironnemnt(newPosition);
+
+        transform.position = Vector3.Lerp(transform.position, newPosition, smooth * Time.deltaTime);
     }
 
     public void RotateSmoothlyCam()
@@ -76,12 +90,27 @@ public class CameraController : MonoBehaviour
         transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(lTargetDir), Time.time * smooth);
     }
 
-    public void moveCam()
+    public void MoveCam()
     {
         offset = Quaternion.Euler(V, -H, Z) * new Vector3(0, 0, 1);
-        transform.position = focus.transform.position - offset * Distance;
+        transform.position = DetectEnvironnemnt(focus.transform.position - offset * Distance);
         transform.LookAt(focus.transform);
     }
+
+    public Vector3 DetectEnvironnemnt(Vector3 p1)
+    {
+        RaycastHit hit;
+        
+
+        if (Physics.Raycast(p1, -Vector3.up,out hit, heigthDetect, mask) && hit.distance < minHeight) 
+        {
+            p1.y += minHeight ;
+            V += hit.distance * minHeight;
+        }
+        return p1;
+    }
+
+    #endregion
 
     #region getter/setter
 
@@ -94,7 +123,8 @@ public class CameraController : MonoBehaviour
 
         set
         {
-            v = Mathf.Clamp(value, 0, 90);
+            if (canMoveBottom || (!canMoveBottom && value < v))
+                v = Mathf.Clamp(value, 0, 90);
             setVerticalUI(v);
         }
     }

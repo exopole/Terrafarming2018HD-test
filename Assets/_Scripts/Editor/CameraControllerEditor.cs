@@ -22,6 +22,11 @@ public class CameraControllerEditor : Editor {
     SerializedProperty horizontalTextProperty;
     SerializedProperty smoothProperty;
     SerializedProperty focusProperty;
+    SerializedProperty canMoveBottomProperty;
+    SerializedProperty radiusDetectProperty;
+    SerializedProperty heigthDetectProperty;
+    SerializedProperty maskProperty;
+    SerializedProperty minHeightProperty;
 
 
     private void OnEnable()
@@ -44,6 +49,12 @@ public class CameraControllerEditor : Editor {
         horizontalTextProperty = serializedObject.FindProperty("horizontalText");
         smoothProperty = serializedObject.FindProperty("smooth");
         focusProperty = serializedObject.FindProperty("focus");
+        canMoveBottomProperty = serializedObject.FindProperty("canMoveBottom");
+        radiusDetectProperty = serializedObject.FindProperty("radiusDetect");
+        heigthDetectProperty = serializedObject.FindProperty("heigthDetect");
+        maskProperty = serializedObject.FindProperty("mask");
+        minHeightProperty = serializedObject.FindProperty("minHeight");
+
     }
 
     public override void OnInspectorGUI()
@@ -63,10 +74,15 @@ public class CameraControllerEditor : Editor {
         EditorGUILayout.PropertyField(smoothProperty);
         EditorGUILayout.PropertyField(verticalTextProperty);
         EditorGUILayout.PropertyField(horizontalTextProperty);
+        EditorGUILayout.PropertyField(canMoveBottomProperty);
+        EditorGUILayout.PropertyField(heigthDetectProperty);
+        EditorGUILayout.PropertyField(radiusDetectProperty);
+        EditorGUILayout.PropertyField(maskProperty);
+        EditorGUILayout.PropertyField(minHeightProperty);
 
         if (!Application.isPlaying && cam.focus != null )
         {
-            cam.moveSmoothlyCam();
+            cam.MoveSmoothlyCam();
             cam.RotateSmoothlyCam();
         }
 
