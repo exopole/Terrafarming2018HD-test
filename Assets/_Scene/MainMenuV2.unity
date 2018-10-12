@@ -135,10 +135,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cc: {fileID: 48322135}
+  target: {fileID: 0}
+  targetRotation: {fileID: 1171057048}
   moveDirection: {x: 0, y: 0, z: 0}
   canMove: 1
   usingDirectionel: 0
-  target: {fileID: 0}
   distanceStop: 0.1
   gravity: 20
   jumpSpeed: 8
