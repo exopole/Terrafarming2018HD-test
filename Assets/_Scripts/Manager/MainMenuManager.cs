@@ -45,6 +45,18 @@ public class MainMenuManager : MonoBehaviour
 
     }
 
+    public void Update()
+    {
+        if (!hasPressedEnter)
+        {
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0))
+            {
+                ShowMainMenu();
+                positionsMenu.Switch(0);
+            }
+        }
+    }
+
     public void QuitGame()
     {
         //		GetComponent<AudioSource> ().PlayOneShot (clic1Snd);
@@ -60,6 +72,7 @@ public class MainMenuManager : MonoBehaviour
         else
             Debug.Log("MainMenuManager ===>>>audioS not implement");
         mainMenuPanel.SetActive(false);
+        player.anim.SetBool(AnimeParameters.isvictory.ToString(), true);
         loadingScreenControl.LoadScreen(1);
         //SceneManager.LoadScene(1, LoadSceneMode.Single);
     }
@@ -68,23 +81,11 @@ public class MainMenuManager : MonoBehaviour
     {
         PlayerPrefs.SetString("Game", "continue");
         audioS.PlayOneShot(startGameSnd);
+        player.anim.SetBool(AnimeParameters.isvictory.ToString(), true);
         mainMenuPanel.SetActive(false);
         loadingScreenControl.LoadScreen(1);
         //SceneManager.LoadScene (1, LoadSceneMode.Single);
     }
-
-    public void Update()
-    {
-        if (!hasPressedEnter)
-        {
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0))
-            {
-                ShowMainMenu();
-                positionsMenu.Switch(0);
-            }
-        }
-    }
-
     public void ShowMainMenu()
     {
         hasPressedEnter = true;

@@ -22,7 +22,6 @@ public class CameraControllerEditor : Editor {
     SerializedProperty horizontalTextProperty;
     SerializedProperty smoothProperty;
     SerializedProperty focusProperty;
-    SerializedProperty canMoveBottomProperty;
     SerializedProperty radiusDetectProperty;
     SerializedProperty heigthDetectProperty;
     SerializedProperty maskProperty;
@@ -49,7 +48,6 @@ public class CameraControllerEditor : Editor {
         horizontalTextProperty = serializedObject.FindProperty("horizontalText");
         smoothProperty = serializedObject.FindProperty("smooth");
         focusProperty = serializedObject.FindProperty("focus");
-        canMoveBottomProperty = serializedObject.FindProperty("canMoveBottom");
         radiusDetectProperty = serializedObject.FindProperty("radiusDetect");
         heigthDetectProperty = serializedObject.FindProperty("heigthDetect");
         maskProperty = serializedObject.FindProperty("mask");
@@ -74,7 +72,6 @@ public class CameraControllerEditor : Editor {
         EditorGUILayout.PropertyField(smoothProperty);
         EditorGUILayout.PropertyField(verticalTextProperty);
         EditorGUILayout.PropertyField(horizontalTextProperty);
-        EditorGUILayout.PropertyField(canMoveBottomProperty);
         EditorGUILayout.PropertyField(heigthDetectProperty);
         EditorGUILayout.PropertyField(radiusDetectProperty);
         EditorGUILayout.PropertyField(maskProperty);

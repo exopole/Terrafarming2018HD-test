@@ -268,7 +268,6 @@ public class BehaviourController : MonoBehaviour
     public void rotation(Vector3 direction)
     {
         Vector3 rotation = new Vector3(direction.x, 0, direction.z);
-
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(rotation.normalized), speedRotate * Time.deltaTime);
     }
 

@@ -25,8 +25,7 @@ public class PlayerMenuStateAnimator : StateMachineBehaviour
 
     public bool isPlayerMoving()
     {
-        Vector3 mouvement = controller.behaviour.moveDirection;
-        return mouvement.x != 0 | mouvement.z != 0;
+        return controller.targetMove || controller.behaviour.target;
     }
 
 }

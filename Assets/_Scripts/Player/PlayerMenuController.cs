@@ -11,6 +11,8 @@ public class PlayerMenuController : MonoBehaviour
 
     
     public BehaviourController behaviour;
+
+    public Transform targetMove;
     
     #endregion variables editor
 

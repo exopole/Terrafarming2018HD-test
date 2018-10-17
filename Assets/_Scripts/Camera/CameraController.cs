@@ -44,8 +44,6 @@ public class CameraController : MonoBehaviour
     private float z;
 
 
-    public bool canMoveBottom = true;
-
 
     #endregion other variables
 
@@ -123,8 +121,7 @@ public class CameraController : MonoBehaviour
 
         set
         {
-            if (canMoveBottom || (!canMoveBottom && value < v))
-                v = Mathf.Clamp(value, 0, 90);
+            v = Mathf.Clamp(value, 0, 90);
             setVerticalUI(v);
         }
     }

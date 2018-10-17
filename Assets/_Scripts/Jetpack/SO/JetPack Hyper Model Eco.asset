@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: JetPack Hyper Model Eco
   m_EditorClassIdentifier: 
   jumpForce: 10
-  terrains: 1
   consoBoost: 0
   consoVol: 0
+  terrainsValue: -1
   canVol: 1
